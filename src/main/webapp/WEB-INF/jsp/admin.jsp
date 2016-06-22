@@ -1,14 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="/first/css/bootstrap.min.css" rel="stylesheet">
-	<link href="/first/font-awesome/css/font-awesome.css" rel="stylesheet">
-   	<link href="/first/css/sb-admin.css" rel="stylesheet">
-<title>«–ø¯ ∞¸∏ÆΩ√Ω∫≈€</title>
+	<%@ include file="/WEB-INF/include/include-header.jspf" %>
+<title>ÌïôÏõê Í¥ÄÎ¶¨ÏãúÏä§ÌÖú</title>
 </head>
 <body>
 	<div id="wrapper"><!-- /#wrapper -->
@@ -20,14 +17,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#" style="color: white">«–ø¯ ∞¸∏ÆΩ√Ω∫≈€</a>
+                <a class="navbar-brand" href="#" style="color: white">ÌïôÏõê Í¥ÄÎ¶¨ÏãúÏä§ÌÖú</a>
             </div>
             <!-- /.navbar-header -->
 			
 			<ul class="nav navbar-top-links navbar-right">
+				<li>
+					<span class="badge">
+						${sessionScope.admin}
+					</span>
+				</li>
                 <li class="dropdown">
-                    <a href="#">
-                        <span class="badge"><i class="glyphicon glyphicon-off"></i> ∑Œ±◊æ∆øÙ</span>
+                    <a href="/first/dblab/logout.do">
+                        <span class="badge"><i class="glyphicon glyphicon-off"></i> Î°úÍ∑∏ÏïÑÏõÉ</span>
                     </a>
                 </li>
             </ul>
@@ -39,43 +41,40 @@
 			<ul class="nav" id="side-menu">
 				<li class="sidebar-search"></li>
 				<li>
-					<a href="#"><i class="fa fa-dashboard fa-fw"></i> ¥ÎΩ√∫∏µÂ</a>
+					<a href="/first/dblab/dash.do"><i class="fa fa-dashboard fa-fw"></i> ÎåÄÏãúÎ≥¥Îìú</a>
 				</li>
 				<li class="active1">
-					<a href="#"><i class="fa fa-user fa-fw"></i> «–ø¯ª˝ ¡§∫∏	<span class="fa arrow"></span></a>
+					<a href="#"><i class="fa fa-user fa-fw"></i> ÌïôÏõêÏÉù Ï†ïÎ≥¥	<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li>
-							<a href="#">«–ø¯ª˝ ∞¸∏Æ</a>
+							<a href="/first/dblab/studentList.do"><i class="glyphicon glyphicon-cog"></i>ÌïôÏõêÏÉù Í¥ÄÎ¶¨</a>
 						</li>
 						<li>
-							<a href="#">º∫¿˚ ¡∂»∏</a>
-						</li>
-						<li>
-							<a href="#">ºˆ∞≠∑· ≥≥∫Œ«ˆ»≤</a>
+							<a href="/first/dblab/cashCheck.do"><i class="glyphicon glyphicon-usd"></i>ÏàòÍ∞ïÎ£å ÎÇ©Î∂ÄÌòÑÌô©</a>
 						</li>
 					</ul>
 					<!-- /.nav-second-level -->
 				</li>
 				<li class="active2">
-					<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> √‚ºÆ∫Œ ∞¸∏Æ<span class="fa arrow"></span></a>
+					<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Ï∂úÏÑùÎ∂Ä Í¥ÄÎ¶¨<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li>
-							<a href="#">¿œ¿œæ˜π´¿œ¡ˆ</a>
+							<a href="/first/dblab/dayLog.do"><i class="glyphicon glyphicon-list"></i>ÏùºÏùºÏóÖÎ¨¥ÏùºÏßÄ</a>
 						</li>
 						<li>
-							<a href="#">«–ª˝∫∞æ˜π´¿œ¡ˆ</a>
+							<a href="/first/dblab/studentLog.do"><i class="glyphicon glyphicon-book"></i>ÌïôÏÉùÎ≥ÑÏóÖÎ¨¥ÏùºÏßÄ</a>
 						</li>
 					</ul>
 					<!-- /.nav-second-level -->
 				</li>
 				<li>
-					<a href="#"><i class="glyphicon glyphicon-usd"></i> «ˆ±› √‚≥≥∫Œ</a>
+					<a href="/first/dblab/cashbook.do"><i class="glyphicon glyphicon-usd"></i> ÌòÑÍ∏à Ï∂úÎÇ©Î∂Ä</a>
 				</li>
 				<li>
-					<a href="#"><i class="glyphicon glyphicon-folder-open"></i> ¿⁄∑·Ω«</a>
+					<a href="/first/dblab/file.do"><i class="glyphicon glyphicon-folder-open"></i> ÏûêÎ£åÏã§</a>
 				</li>
 				<li>
-					<a href="#" class="list-group-item active"><i class="glyphicon glyphicon-tags"></i> ∞¸∏Æ¿⁄ ∆‰¿Ã¡ˆ</a>
+					<a href="/first/dblab/admin.do"><i class="glyphicon glyphicon-tags"></i> Í¥ÄÎ¶¨Ïûê ÌéòÏù¥ÏßÄ</a>
 				</li>
 			</ul>
 			<!-- /#side-menu -->
@@ -86,7 +85,7 @@
         <div id="page-wrapper"><!-- page wrapper -->
         	<div class="row">
 	            <div class="col-lg-12">
-	                <h1 class="page-header">∞¸∏Æ¿⁄ ∆‰¿Ã¡ˆ</h1>
+	                <h1 class="page-header">Í¥ÄÎ¶¨Ïûê ÌéòÏù¥ÏßÄ</h1>
 	            </div>
 	            <!-- /.col-lg-12 -->
        		</div>
@@ -94,34 +93,34 @@
 	        <div class="row"><!-- divPassword -->
 	        	<span class="col-lg-6">
 					<div class="panel panel-default">
-		                <div class="panel-heading my-panel"> ∞¸∏Æ¿⁄ ∫Òπ–π¯»£ º≥¡§</div>
+		                <div class="panel-heading my-panel"> Í¥ÄÎ¶¨Ïûê ÎπÑÎ∞ÄÎ≤àÌò∏ ÏÑ§Ï†ï</div>
 		                <div class="panel-body" id="panel-member">
-		                    <form class="form-horizontal" role="form">
+		                    <form class="form-horizontal" action="passChange.do" role="form">
 		                        <div class="form-group">
-		                            <label for="inputAdminCurPw" class="col-lg-3 control-label">«ˆ¿Á ∫Òπ–π¯»£</label>
+		                            <label for="inputAdminCurPw" class="col-lg-3 control-label">ÌòÑÏû¨ ÎπÑÎ∞ÄÎ≤àÌò∏</label>
 		
 		                            <div class="col-lg-7">
 		                                <input type="password" class="form-control admin" name="inputAdminCurPw"
-		                                       id="inputAdminCurPw" placeholder="«ˆ¿Á ∫Òπ–π¯»£">
+		                                       id="inputAdminCurPw" placeholder="ÌòÑÏû¨ ÎπÑÎ∞ÄÎ≤àÌò∏">
 		                            </div>
 		                        </div>
 		                        <div class="form-group">
-		                            <label for="inputAdminNewPw" class="col-lg-3 control-label">ªı ∫Òπ–π¯»£</label>
+		                            <label for="inputAdminNewPw" class="col-lg-3 control-label">ÏÉà ÎπÑÎ∞ÄÎ≤àÌò∏</label>
 		
 		                            <div class="col-lg-7">
 		                                <input type="password" class="form-control admin" name="inputAdminNewPw"
-		                                       id="inputAdminNewPw" placeholder="ªı ∫Òπ–π¯»£">
+		                                       id="inputAdminNewPw" placeholder="ÏÉà ÎπÑÎ∞ÄÎ≤àÌò∏">
 		                            </div>
 		                        </div>
 		                        <div class="form-group">
-		                            <label for="inputAdminNewPwR" class="col-lg-3 control-label">ªı ∫Òπ–π¯»£(π›∫π)</label>
+		                            <label for="inputAdminNewPwR" class="col-lg-3 control-label">ÏÉà ÎπÑÎ∞ÄÎ≤àÌò∏(Î∞òÎ≥µ)</label>
 		
 		                            <div class="col-lg-7">
 		                                <input type="password" class="form-control admin" name="inputAdminNewPwR"
-		                                       id="inputAdminNewPwR" placeholder="ªı ∫Òπ–π¯»£(π›∫π)">
+		                                       id="inputAdminNewPwR" placeholder="ÏÉà ÎπÑÎ∞ÄÎ≤àÌò∏(Î∞òÎ≥µ)">
 		                            </div>
 		                            <div class="col-lg-2">
-		                                <button type="button" class="btn btn-primary" id="btnAdminSave">¿˙¿Â</button>
+		                                <button type="submit" class="btn btn-primary" id="btnAdminSave">Ï†ÄÏû•</button>
 		                            </div>
 		                        </div>
 		                    </form>
@@ -131,34 +130,34 @@
 				
 				<span class="col-lg-6">
 					<div class="panel panel-default">
-		                <div class="panel-heading my-panel"> º±ª˝¥‘ ∫Òπ–π¯»£ º≥¡§</div>
+		                <div class="panel-heading my-panel"> ÏÑ†ÏÉùÎãò ÎπÑÎ∞ÄÎ≤àÌò∏ ÏÑ§Ï†ï</div>
 		                <div class="panel-body" id="panel-member">
-		                    <form class="form-horizontal" role="form">
+		                    <form class="form-horizontal" action="passChangeT.do" role="form">
 		                        <div class="form-group">
-		                            <label for="inputCurPw" class="col-lg-3 control-label">«ˆ¿Á ∫Òπ–π¯»£</label>
+		                            <label for="inputCurPw" class="col-lg-3 control-label">ÌòÑÏû¨ ÎπÑÎ∞ÄÎ≤àÌò∏</label>
 		
 		                            <div class="col-lg-7">
 		                                <input type="password" class="form-control user" name="inputCurPw" id="inputCurPw"
-		                                       placeholder="«ˆ¿Á ∫Òπ–π¯»£">
+		                                       placeholder="ÌòÑÏû¨ ÎπÑÎ∞ÄÎ≤àÌò∏">
 		                            </div>
 		                        </div>
 		                        <div class="form-group">
-		                            <label for="inputNewPw" class="col-lg-3 control-label">ªı ∫Òπ–π¯»£</label>
+		                            <label for="inputNewPw" class="col-lg-3 control-label">ÏÉà ÎπÑÎ∞ÄÎ≤àÌò∏</label>
 		
 		                            <div class="col-lg-7">
 		                                <input type="password" class="form-control user" name="inputNewPw" id="inputNewPw"
-		                                       placeholder="ªı ∫Òπ–π¯»£">
+		                                       placeholder="ÏÉà ÎπÑÎ∞ÄÎ≤àÌò∏">
 		                            </div>
 		                        </div>
 		                        <div class="form-group">
-		                            <label for="inputNewPwR" class="col-lg-3 control-label">ªı ∫Òπ–π¯»£(π›∫π)</label>
+		                            <label for="inputNewPwR" class="col-lg-3 control-label">ÏÉà ÎπÑÎ∞ÄÎ≤àÌò∏(Î∞òÎ≥µ)</label>
 		
 		                            <div class="col-lg-7">
 		                                <input type="password" class="form-control user" name="inputNewPwR" id="inputNewPwR"
-		                                       placeholder="ªı ∫Òπ–π¯»£(π›∫π)">
+		                                       placeholder="ÏÉà ÎπÑÎ∞ÄÎ≤àÌò∏(Î∞òÎ≥µ)">
 		                            </div>
 		                            <div class="col-lg-2">
-		                                <button type="button" class="btn btn-primary" id="btnSave">¿˙¿Â</button>
+		                                <button type="submit" class="btn btn-primary" id="btnSave">Ï†ÄÏû•</button>
 		                            </div>
 		                        </div>
 		                    </form>
@@ -170,115 +169,143 @@
         	<div class="row"><!-- class list, teacher -->
 	            <span class="col-lg-6">
 	                <div class="panel panel-default">
-	                    <div class="panel-heading  my-panel">ºˆæ˜ ∏Ò∑œ ∞¸∏Æ</div>
+	                    <div class="panel-heading">
+							<div class="row">
+								<div class="col-md-4 my-panel"">ÏàòÏóÖ Î™©Î°ù Í¥ÄÎ¶¨ <span id="selector"></span></div>
+								<div class="col-md-1 col-md-offset-6">
+									<a type="button" class="btn btn-info btn-xs hidden-print"  id="btnNewLecture">
+										<i class="glyphicon glyphicon-plus"></i> ÏàòÏóÖ Îì±Î°ù
+									</a>
+								</div>
+							</div>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="lectureModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        	<div class="modal-dialog">
+                        		<div class="modal-content">
+                        			<form action="lectureEnroll.do" method="post">
+                        				<div class="modal-header">
+                        					<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        					<h5 class="modal-title" id="modalTitle"></h5>
+                        				</div>
+                        				<div class="modal-body">
+                        					<fieldset>      
+		                                        <div class="form-group">
+		                                        	<label class="control-label" for="slname">ÏàòÏóÖÎ™Ö(*)</label>
+		                                        	<input class="form-control" type="text" name="lname" id="lname">
+		                                        </div>
+		                                        <div class="form-group">
+		                                        	<fieldset>
+		                                        		<legend style="font-size:14px; font-weight:bold" align="top">ÏàòÏóÖÏöîÏùº(*)</legend>
+		                                        		<label class="radio-inline">
+		                                        			<input class="fomr-control" type="radio" name="ld" id="ld" value="Ìôî">Ìôî
+		                                        		</label>
+		                                        		<label class="radio-inline">
+		                                        			<input class="fomr-control" type="radio" name="ld" id="ld" value="Ïàò">Ïàò
+		                                        		</label>
+		                                        		<label class="radio-inline">
+		                                        			<input class="fomr-control" type="radio" name="ld" id="ld" value="Î™©">Î™©
+		                                        		</label>
+		                                        	</fieldset>
+		                                        </div>
+		                                        <div class="form-group">
+		                                        	<fieldset>
+		                                        		<legend style="font-size:14px; font-weight:bold" align="top">ÏàòÏóÖÏãúÍ∞Ñ(*)</legend>
+		                                        		<label class="radio-inline">
+		                                        			<input class="fomr-control" type="radio" name="lt" id="lt" value="16:00~17:50">16:00~17:50
+		                                        		</label>
+		                                        		<label class="radio-inline">
+		                                        			<input class="fomr-control" type="radio" name="lt" id="lt" value="18:00~19:50">18:00~19:50
+		                                        		</label>
+		                                        		<label class="radio-inline">
+		                                        			<input class="fomr-control" type="radio" name="lt" id="lt" value="20:00~21:50">20:00~21:50
+		                                        		</label>
+		                                        	</fieldset>
+		                                        </div>
+		                                        <div class="form-group">
+		                                        	<label class="control-label" for="slname">ÏàòÏóÖÎ£å(*)</label>
+		                                        	<input class="form-control" type="text" name="lmoney" id="lmoney">
+		                                        </div>
+		                                    </fieldset>
+                        				</div>
+                        				<div class="modal-footer">
+		                                    <fieldset>
+		                                        <button type="button" class="btn btn-default" data-dismiss="modal">Îã´Í∏∞</button>
+		                                        <button type="submit" class="btn btn-primary">Îì±Î°ù</button>
+		                                    </fieldset>
+		                                </div>	
+                        			</form>
+                        		</div>
+                        	</div>
+                        </div><!-- /Modal -->
 	                    <div class="panel-body" id="panel-class">
 	                        <table class="table table-condensed text-center table-hover" id="table-class">
 	                            <thead>
 	                            <tr>
-	                                <th class='text-center'>ºˆæ˜∏Ì</th>
-	                                <th class='text-center'>¿Ã∏ßºˆ¡§</th>
-	                                <th class='text-center'>º¯º≠∫Ø∞Ê</th>
-	                                <th class='text-center'>ªË¡¶</th>
+	                                <th class='text-center'>ÏàòÏóÖÎ™Ö</th>
+	                                <th class='text-center'>ÏàòÏóÖÏãúÍ∞Ñ</th>
+	                                <th class='text-center'>ÏàòÏóÖÏöîÏùº</th>
+	                                <th class='text-center'>ÏÇ≠Ï†ú</th>
 	                            </tr>
 	                            </thead>
-	
-	                            <tbody id="tbody-class">
-	
-	                            </tbody>
-	
+								<tbody>
+									<c:choose>
+										<c:when test="${fn:length(list) > 0}">
+						                    <c:forEach var="row" items="${list}" varStatus="status">
+						                        <tr>
+						                        	<input type="hidden" id="${row.L_IDX }" name="LIDX" value="${row.L_IDX }">
+						                            <td>${row.L_NAME }</td>
+						                            <td>${row.L_TIME }</td>
+						                            <td>${row.L_DAY }</td>					                           
+						                            <td><a href="#this" class="btn" id="${row.L_IDX }td"><i style="color:red" class="glyphicon glyphicon-exclamation-sign"></i></a></td>
+						                            <script>
+							                            $('#${row.L_IDX }td').on("click", function(e){
+							                    			e.preventDefault();
+							                    			fn_${row.L_IDX }();
+							                    		});
+							                            function fn_${row.L_IDX }(){
+							                    			var comSubmit = new ComSubmit();
+							                    			comSubmit.setUrl("<c:url value='/dblab/deleteLecture.do' />");
+							                    			comSubmit.addParam("LIDX", $("#${row.L_IDX }").val());
+							                    			comSubmit.submit();
+							                    		}
+							                        </script>							                            							                          
+						                        </tr>
+						                    </c:forEach>
+						                </c:when>
+						                <c:otherwise>
+							                    <tr>
+							                        <td colspan="10">Ï°∞ÌöåÎêú Í≤∞Í≥ºÍ∞Ä ÏóÜÏäµÎãàÎã§.</td>
+							                    </tr>
+							                </c:otherwise> 
+									</c:choose>
+								</tbody>
 	                        </table>
 	                    </div>
 	                    <div class="panel-footer">
-	                        ***************************************************************************************************
-	                        <br>
-	                        ***************************************************************************************************
-	                        <br>
-	                        ***************************************************************************************************
-	                        <br>
-	                        ***************************************************************************************************
-	                        <br>
-	                        ***************************************************************************************************
-	                        <br>
-	                        ***************************************************************************************************
-	                        <br>
-	                        ***************************************************************************************************
-	                        <br>
-	                        ***************************************************************************************************
-	                        <br>
-	                        ***************************************************************************************************
-	                        <br>
-	                        ***************************************************************************************************
-	                        <br>
-	                        ***************************************************************************************************
-	                        <br>
-	                        ***************************************************************************************************
-	                        <br>
 	                        ***************************************************************************************************
 	                    </div>
 	                </div>
 	            </span>
 	            
-	            <span class="col-lg-6">
-	                    <div class="panel panel-default">
-	                        <div class="panel-heading my-panel"> º±ª˝¥‘ ±««— º≥¡§</div>
-	                        <div class="panel-body" id="panel-member">
-	                            <ul>
-	                                <form id="authorForm">
-	                                    <input type="hidden" name="TYPE" value="AUTH"></input>
-	                                    <li>
-	                                        <ol class="breadcrumb">
-	                                            <li><input type="checkbox" name="dashboard2" value="dashboard2" class="input-page"></input> Dashboard</li>
-	                                        </ol>
-	                                    </li>
-	                                    <li>
-	                                        <ol class="breadcrumb">
-	                                            <li><input type="checkbox" name="member" value="member" class="input-page"></input> «–ø¯ª˝∞¸∏Æ</li>
-	                                            <li><input type="checkbox" name="score" value="score" class="input-page"></input>º∫¿˚¡∂»∏</li>
-	                                            <li><input type="checkbox" name="tuition" value="tuition" class="input-page"></input> ºˆ∞≠∑·≥≥∫Œ</li>
-	                                        </ol>
-	                                    </li>
-	                                    <li>
-	                                        <ol class="breadcrumb">
-	                                            <li><input type="checkbox" name="attend" value="attend" class="input-page"></input> √‚ºÆ∫Œ∞¸∏Æ</li>
-	                                            <li><input type="checkbox" name="attend" value="attend" class="input-page"></input> ¿œ¿œæ˜π´¿œ¡ˆ</li>
-	                                            <li><input type="checkbox" name="attend" value="attend" class="input-page"></input> «–ª˝∫∞æ˜π´¿œ¡ˆ</li>
-	                                        </ol>
-	                                    </li>
-	                                    <li>
-	                                        <ol class="breadcrumb">
-	                                            <li><input type="checkbox" name="cash" value="cash" class="input-page"></input> «ˆ±›√‚≥≥∫Œ</li>
-	                                        </ol>
-	                                    </li>
-	                                    <li>
-	                                        <ol class="breadcrumb">
-	                                            <li><input type="checkbox" name="bbs" value="bbs" class="input-page"></input> ¿⁄∑·Ω«</li>
-	                                        </ol>
-	                                    </li>
-	                                </form>
-	                            </ul>
-	                            <button type="button" class="btn btn-primary" id="btnAuthSave">¿˙¿Â</button>
-	                        </div>
-	                    </div>
-	              </span>
               </div><!-- class list, teacher -->
               
         </div><!-- page wrapper -->
     </div><!-- /#wrapper -->
 
-    <!-- Core Scripts - Include with every page -->
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-
-    <!-- SB Admin Scripts - Include with every page -->
-    <script src="js/sb-admin.js"></script>
+    <%@ include file="/WEB-INF/include/include-body.jspf" %>
 	<script>
+		var $modalTitle=$('#modalTitle');
+		
 		$(document).ready( function() {
-		  $("#load_writing").on("click", function() {
-		  $("#content").load("#");
+			$("#load_writing").on("click", function() {
+				$("#content").load("#");
+			});
+			$('#btnNewLecture').click(function(){
+				$modalTitle.text('ÌïôÏõêÏÉù Îì±Î°ù');
+				$('#lectureModal').modal();
 			});
 		});
 	</script>
-
 </body>
 </html>

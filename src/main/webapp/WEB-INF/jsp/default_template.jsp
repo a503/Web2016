@@ -1,14 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-   	<link href="font-awesome/css/font-awesome.css" rel="stylesheet">
-   	<link href="css/sb-admin.css" rel="stylesheet">
-<title>ÇÐ¿ø °ü¸®½Ã½ºÅÛ</title>
+	<%@ include file="/WEB-INF/include/include-header.jspf" %>
+<title>í•™ì› ê´€ë¦¬ì‹œìŠ¤í…œ</title>
 </head>
 <body>
 
@@ -22,14 +19,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#" style="color: white">ÇÐ¿ø °ü¸®½Ã½ºÅÛ</a>
+                <a class="navbar-brand" href="#" style="color: white">í•™ì› ê´€ë¦¬ì‹œìŠ¤í…œ</a>
             </div>
             <!-- /.navbar-header -->
 			
 			<ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
-                    <a href="#">
-                        <span class="badge"><i class="glyphicon glyphicon-off"></i> ·Î±×¾Æ¿ô</span>
+                    <a href="/first/dblab/logout.do">
+                        <span class="badge"><i class="glyphicon glyphicon-off"></i> ë¡œê·¸ì•„ì›ƒ</span>
                     </a>
                 </li>
             </ul>
@@ -41,57 +38,51 @@
 			<ul class="nav" id="side-menu">
 				<li class="sidebar-search"></li>
 				<li>
-					<a href="#"><i class="fa fa-dashboard fa-fw"></i> ´ë½Ãº¸µå</a>
+					<a href="/first/dblab/dash.do"><i class="fa fa-dashboard fa-fw"></i> ëŒ€ì‹œë³´ë“œ</a>
 				</li>
 				<li class="active1">
-					<a href="#"><i class="fa fa-user fa-fw"></i> ÇÐ¿ø»ý Á¤º¸	<span class="fa arrow"></span></a>
+					<a href="#"><i class="fa fa-user fa-fw"></i> í•™ì›ìƒ ì •ë³´	<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li>
-							<a href="#">ÇÐ¿ø»ý °ü¸®</a>
+							<a href="/first/dblab/studentList.do">í•™ì›ìƒ ê´€ë¦¬</a>
 						</li>
 						<li>
-							<a href="#">¼ºÀû Á¶È¸</a>
-						</li>
-						<li>
-							<a href="#">¼ö°­·á ³³ºÎÇöÈ²</a>
+							<a href="/first/dblab/cashCheck.do">ìˆ˜ê°•ë£Œ ë‚©ë¶€í˜„í™©</a>
 						</li>
 					</ul>
 					<!-- /.nav-second-level -->
 				</li>
 				<li class="active2">
-					<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Ãâ¼®ºÎ °ü¸®<span class="fa arrow"></span></a>
+					<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> ì¶œì„ë¶€ ê´€ë¦¬<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li>
-							<a href="#">ÀÏÀÏ¾÷¹«ÀÏÁö</a>
+							<a href="/first/dblab/dayLog.do">ì¼ì¼ì—…ë¬´ì¼ì§€</a>
 						</li>
 						<li>
-							<a href="#">ÇÐ»ýº°¾÷¹«ÀÏÁö</a>
+							<a href="/first/dblab/studentLog.do">í•™ìƒë³„ì—…ë¬´ì¼ì§€</a>
 						</li>
 					</ul>
 					<!-- /.nav-second-level -->
 				</li>
 				<li>
-					<a href="#"><i class="glyphicon glyphicon-usd"></i> Çö±Ý Ãâ³³ºÎ</a>
+					<a href="/first/dblab/cashbook.do"><i class="glyphicon glyphicon-usd"></i> í˜„ê¸ˆ ì¶œë‚©ë¶€</a>
 				</li>
 				<li>
-					<a href="#"><i class="glyphicon glyphicon-folder-open"></i> ÀÚ·á½Ç</a>
+					<a href="/first/dblab/file.do"><i class="glyphicon glyphicon-folder-open"></i> ìžë£Œì‹¤</a>
 				</li>
 				<li>
-					<a href="#"><i class="glyphicon glyphicon-tags"></i> °ü¸®ÀÚ ÆäÀÌÁö</a>
+					<a href="/first/dblab/admin.do"><i class="glyphicon glyphicon-tags"></i> ê´€ë¦¬ìž íŽ˜ì´ì§€</a>
 				</li>
 			</ul>
 			<!-- /#side-menu -->
 			</div>
 		</nav>
+		<!-- page wrapper -->
+		<div id="page-wrapper">
+		</div><!-- /page wrapper -->
     </div><!-- /#wrapper -->
-
-    <!-- Core Scripts - Include with every page -->
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-
-    <!-- SB Admin Scripts - Include with every page -->
-    <script src="js/sb-admin.js"></script>
+    
+    <%@ include file="/WEB-INF/include/include-body.jspf" %>
 	<script>
 		$(document).ready( function() {
 		  $("#load_writing").on("click", function() {

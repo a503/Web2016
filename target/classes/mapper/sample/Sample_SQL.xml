@@ -4,6 +4,22 @@
 <mapper namespace="sample">
 	
 	<select id="selectBoardList" parameterType="hashmap" resultType="hashmap">
+	    <include refid="common.pagingPre"/> 
+	    <![CDATA[
+	        SELECT
+	            ROW_NUMBER() OVER (ORDER BY IDX DESC) RNUM,
+	            IDX,
+	            TITLE,
+	            HIT_CNT,
+	            CREA_DTM
+	        FROM
+	            TB_BOARD
+	        WHERE
+	            DEL_GB = 'N'
+	    ]]>
+	    <include refid="common.pagingPost"/> 
+	</select>
+	<select id="selectSession" parameterType="hashmap" resultType="hashmap">
 		<![CDATA[
 			SELECT
 			    a_id,
@@ -13,5 +29,440 @@
 			    admin
 		]]>
 	</select>
+	<select id="selectStudentList" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			    s_id,
+			    s_name,
+			    s_addr,
+			    s_date,
+			    s_phone,
+			    s_pphone,
+			    s_check,
+			    sl_name,			    
+			    sl_day,
+			    sl_time		 
+			FROM
+			    student
+		]]>
+	</select>
+	<select id="selectCount" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			    (SELECT COUNT(S_CHECK) FROM STUDENT WHERE S_CHECK = 'Y') AS S_CHECK_Y,
+			    (SELECT COUNT(S_CHECK) FROM STUDENT WHERE S_CHECK = 'N') AS S_CHECK_N
+			FROM
+			    STUDENT
+			WHERE S_ID = 51
+		]]>
+	</select>
+	<select id="selectStudentLog" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			    SL_IDX,
+			    SL_WRITER,
+			    SL_S_NAME,
+			    SL_L_NAME,
+			    SL_L_DAY,
+			    SL_L_TIME,
+			    SL_ATTENDENCE,
+			    SL_COMMENT	 
+			FROM
+			    STUDENTLOG
+		]]>
+	</select>
+	<select id="selectCashCheck" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			    s_id,
+			    s_name,
+			    s_phone,
+			    s_pphone,
+			    s_check,
+			    sl_name,			    
+			    sl_day
+			FROM
+			    student
+			WHERE
+				s_check = 'N'	 
+			
+		]]>
+	</select>
+	<select id="selectCashbook" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			    C_IDX ,
+			    TO_CHAR(C_DATE, 'YYYY-MM-DD') as C_DATE,
+			    C_CONTENT,
+			    C_INCOME,
+			    C_TOTAL,
+			    C_NOTE
+			FROM
+			    CASHBOOK
+			ORDER BY C_IDX	ASC		
+		]]>
+	</select>
+	<select id="selectDayLog" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			    DL_IDX,
+			    DL_WRITER,
+			    DL_DATE,
+			    DL_L_NAME,
+			    DL_L_DAY,
+			    DL_L_TIME,
+			    DL_ABSENCE,
+			    DL_COMMENT			   
+			FROM
+			    DAYLOG	 			
+		]]>
+	</select>
+	<select id="selectLectureList" parameterType="hashmap" resultType="hashmap">
+		<![CDATA[
+			SELECT
+			    L_IDX,
+			    L_NAME,
+			    L_DAY,
+			    L_TIME,
+			    L_MONEY	 
+			FROM
+			    LECTURE
+		]]>
+	</select>
+	<insert id="insertBoard" parameterType="hashmap" useGeneratedKeys="true" keyProperty="IDX" flushCache="true">
+	    <selectKey keyProperty="IDX" resultType="string" order="BEFORE">
+	        SELECT SEQ_TB_BOARD_IDX.NEXTVAL FROM DUAL
+	    </selectKey>
+	    <![CDATA[
+	         
+	        INSERT INTO TB_BOARD
+	        (
+	            IDX,
+	            TITLE, 
+	            CONTENTS, 
+	            HIT_CNT, 
+	            DEL_GB, 
+	            CREA_DTM, 
+	            CREA_ID
+	        )
+	        VALUES
+	        (
+	            #{IDX}, 
+	            #{TITLE}, 
+	            #{CONTENTS}, 
+	            0, 
+	            'N', 
+	            SYSDATE, 
+	            'Admin'
+	        )
+	    ]]>
+	</insert>
+	<insert id="insertStudent" parameterType="hashmap" useGeneratedKeys="true" keyProperty="S_ID" flushCache="true">
+	    <selectKey keyProperty="S_ID" resultType="string" order="BEFORE">
+	        SELECT SEQ_STUDENT_ID.NEXTVAL FROM DUAL
+	    </selectKey>
+	    <![CDATA[
+	         
+	        INSERT INTO STUDENT
+	        (
+	            S_ID,
+	            S_NAME,
+	            S_DATE,
+	            S_PHONE,
+	            S_PPHONE,
+	            S_CHECK,
+	            SL_NAME,
+	            SL_DAY,
+	            SL_TIME,
+	            S_ADDR
+	        )
+	        VALUES
+	        (
+	            #{S_ID}, 
+	            #{sname}, 
+	            SYSDATE,
+	            #{sphone}, 
+	            #{spphone},
+	            'Y', 
+	            #{slname}, 
+	            #{l0, jdbcType=VARCHAR},
+	            #{l1},
+	            #{saddr}
+	        )
+	    ]]>
+	</insert>
+	<insert id="insertLecture" parameterType="hashmap" useGeneratedKeys="true" keyProperty="L_IDX" flushCache="true">
+	    <selectKey keyProperty="L_IDX" resultType="string" order="BEFORE">
+	        SELECT SEQ_LECTURE_L_IDX.NEXTVAL FROM DUAL
+	    </selectKey>
+	    <![CDATA[
+	         
+	        INSERT INTO LECTURE
+	        (
+	           L_IDX,
+	           L_NAME,
+	           L_DAY,
+	           L_TIME,
+	           L_MONEY
+	        )
+	        VALUES
+	        (
+	           #{L_IDX},
+	           #{lname},
+	           #{ld},
+	           #{lt},
+	           #{lmoney}
+	        )
+	    ]]>
+	</insert>
+	<insert id="insertCashbook" parameterType="hashmap" useGeneratedKeys="true" keyProperty="C_IDX" flushCache="true">
+	    <selectKey keyProperty="C_IDX" resultType="string" order="BEFORE">
+	        SELECT SEQ_CASHBOOK_IDX.NEXTVAL FROM DUAL
+	    </selectKey>
+	    <![CDATA[
+	         
+	        INSERT INTO CASHBOOK
+	        (
+	           C_IDX,
+	           C_DATE,
+	           C_CONTENT,
+	           C_INCOME,
+	           C_NOTE
+	        )
+	        VALUES
+	        (
+	           #{C_IDX},
+	           SYSDATE,
+	           #{ccontent},
+	           #{cincome},    
+	           #{cnote}
+	        )
+	        
+	        
+	    ]]>
+	</insert>
+	<update id="updateTotal" parameterType="hashmap" flushCache="true">
+	    <![CDATA[
+	        UPDATE CASHBOOK
+	        SET
+	        	C_TOTAL=(SELECT SUM(C_INCOME) FROM CASHBOOK)
+	        WHERE
+	        	C_IDX = #{C_IDX} 
+	    ]]>
+	</update>
+	<insert id="insertDayLog" parameterType="hashmap" useGeneratedKeys="true" keyProperty="DL_IDX" flushCache="true">
+	    <selectKey keyProperty="DL_IDX" resultType="string" order="BEFORE">
+	        SELECT SEQ_DAYLOG_IDX.NEXTVAL FROM DUAL
+	    </selectKey>
+	    <![CDATA[
+	         
+	        INSERT INTO DAYLOG
+	        (
+	           DL_IDX,
+	           DL_WRITER,
+	           DL_DATE,
+	           DL_L_NAME,
+	           DL_L_DAY,
+	           DL_L_TIME,
+	           DL_ABSENCE,
+	           DL_COMMENT
+	        )
+	        VALUES
+	        (
+	           #{DL_IDX},
+	           #{dlwriter},
+	           SYSDATE,
+	           #{dllname},
+	           #{dllday},
+	           #{dlltime},
+	           #{dlabsence},
+	           #{dlcomment}
+	        )
+	        
+	        
+	    ]]>
+	</insert>
+	<insert id="insertStudentLog" parameterType="hashmap" useGeneratedKeys="true" keyProperty="SL_IDX" flushCache="true">
+	    <selectKey keyProperty="SL_IDX" resultType="string" order="BEFORE">
+	        SELECT SEQ_STUDENTLOG_IDX.NEXTVAL FROM DUAL
+	    </selectKey>
+	    <![CDATA[
+	         
+	        INSERT INTO STUDENTLOG
+	        (
+	           SL_IDX,
+	           SL_WRITER,
+	           SL_S_NAME,
+	           SL_L_NAME,
+	           SL_L_DAY,
+	           SL_L_TIME,
+	           SL_ATTENDENCE,
+	           SL_COMMENT
+	        )
+	        VALUES
+	        (
+	           #{SL_IDX},
+	           #{slwriter},
+	           #{slsname},
+	           #{sllname},
+	           #{sllday},
+	           #{slltime},
+	           #{slattendence},
+	           #{slcomment}
+	        )
+	        
+	        
+	    ]]>
+	</insert>
+	<!-- useGeneratedKeys, keyProperty속성이 추가 -->
+	<!-- useGeneratedKeys는 MyBatis에서 제공하는 기능으로 DB에 입력(insert, update)시 데이터베이스에서 자동적으로 증가되는 키를 받는 JDBC의 getGeneratedKeys 메서드를 사용하도록 하는것이다.   -->
+	<!-- keyproperty는 getGeneratedKeys메서드나 insert구문의 selectKey에 의해 선택된 키를 셋팅하는 속성이다. -->
+	<update id="updateHitCnt" parameterType="hashmap" flushCache="true">
+	    <![CDATA[
+	        UPDATE TB_BOARD 
+	        SET
+	            HIT_CNT = NVL(HIT_CNT, 0) + 1
+	        WHERE
+	            IDX = #{IDX}    
+	    ]]>
+	</update>
+	<update id="updateCheck" parameterType="hashmap" flushCache="true">
+	    <![CDATA[
+	        UPDATE STUDENT 
+	        SET
+	            S_CHECK = 'N'
+	        WHERE
+	            S_ID = #{SID}    
+	    ]]>
+	</update>
+	<update id="updateCheckReturn" parameterType="hashmap" flushCache="true">
+	    <![CDATA[
+	        UPDATE STUDENT 
+	        SET
+	            S_CHECK = 'Y'
+	        WHERE
+	            S_ID = #{SID}    
+	    ]]>
+	</update>
+	 
+	<select id="selectBoardDetail" parameterType="hashmap" resultType="hashmap" flushCache="true">
+	    <![CDATA[
+	        SELECT
+	            IDX,
+	            HIT_CNT,
+	            CREA_ID,
+	            CREA_DTM,
+	            TITLE,
+	            CONTENTS
+	        FROM
+	            TB_BOARD
+	        WHERE
+	            IDX = #{IDX}        
+	    ]]>
+	</select>
+	<update id="updateBoard" parameterType="hashmap" flushCache="true">
+	    <![CDATA[
+	        UPDATE TB_BOARD 
+	        SET
+	            TITLE = #{TITLE},
+	            CONTENTS = #{CONTENTS}
+	        WHERE
+	            IDX = #{IDX}   
+	    ]]>
+	</update>
 	
+	<update id="updatePass" parameterType="hashmap" flushCache="true">
+	    <![CDATA[
+	        UPDATE admin 
+	        SET
+	            a_pw = #{inputAdminNewPw, javaType=String, jdbcType=VARCHAR}
+	        WHERE
+	            a_pw = #{inputAdminCurPw, javaType=String, jdbcType=VARCHAR}   
+	    ]]>
+	</update>
+	<update id="updatePassT" parameterType="hashmap" flushCache="true">
+	    <![CDATA[
+	        UPDATE admin 
+	        SET
+	            a_pw = #{inputNewPw, javaType=String, jdbcType=VARCHAR}
+	        WHERE
+	            a_pw = #{inputCurPw, javaType=String, jdbcType=VARCHAR}   
+	    ]]>
+	</update>
+	
+	<update id="deleteBoard" parameterType="hashmap" flushCache="true">
+	    <![CDATA[
+	        UPDATE TB_BOARD
+	        SET
+	            DEL_GB = 'Y'
+	        WHERE
+	            IDX = #{IDX}
+	    ]]>
+	</update>
+	<delete id="deleteStudent" parameterType="hashmap" flushCache="true">
+		<![CDATA[
+	        DELETE FROM STUDENT
+	        WHERE 
+	        	S_ID = #{SID} 
+	    ]]>
+	</delete>
+	<delete id="deleteLecture" parameterType="hashmap" flushCache="true">
+		<![CDATA[
+	        DELETE FROM LECTURE
+	        WHERE 
+	        	L_IDX=#{LIDX}
+	    ]]>
+	</delete>
+	<insert id="insertFile" parameterType="hashmap" flushCache="true">
+	    <![CDATA[
+	        INSERT INTO TB_FILE
+	        (
+	            IDX,
+	            BOARD_IDX,
+	            ORIGINAL_FILE_NAME,
+	            STORED_FILE_NAME,
+	            FILE_SIZE,
+	            CREA_ID
+	        )
+	        VALUES
+	        (
+	            SEQ_TB_FILE_IDX.NEXTVAL,
+	            #{BOARD_IDX},
+	            #{ORIGINAL_FILE_NAME},
+	            #{STORED_FILE_NAME},
+	            #{FILE_SIZE},
+	            'Admin'
+	        )
+	    ]]>
+	</insert>
+	<select id="selectFileList" parameterType="hashmap" resultType="hashmap" flushCache="true">
+	    <![CDATA[
+	        SELECT
+	            IDX,
+	            ORIGINAL_FILE_NAME,
+	            ROUND(FILE_SIZE/1024,1) AS FILE_SIZE
+	        FROM
+	            TB_FILE
+	        WHERE
+	            BOARD_IDX = #{IDX}
+	            AND DEL_GB = 'N'
+	    ]]>
+	</select>
+	<update id="deleteFileList" parameterType="hashmap" flushCache="true">
+	    <![CDATA[
+	        UPDATE TB_FILE SET
+	            DEL_GB = 'Y'
+	        WHERE
+	            BOARD_IDX = #{IDX}  
+	    ]]>
+	</update>
+	 
+	<update id="updateFile" parameterType="hashmap" flushCache="true">
+	    <![CDATA[
+	        UPDATE TB_FILE SET
+	            DEL_GB = 'N'
+	        WHERE
+	            IDX = #{FILE_IDX}   
+	    ]]>
+	</update>
 </mapper>

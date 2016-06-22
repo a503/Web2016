@@ -1,30 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Core CSS - Include with every page -->
-<link href="/first/css/bootstrap.min.css" rel="stylesheet">
-<link href="/first/font-awesome/css/font-awesome.css" rel="stylesheet">
+<%@ include file="/WEB-INF/include/include-header.jspf" %>
 
-<!-- Page-Level Plugin CSS - Blank -->
-<link rel="stylesheet" href="/first/css/plugins/dataTables/dataTables.bootstrap.css">
-<link href="/first/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
-
-<!-- SB Admin CSS - Include with every page -->
-<link href="/first/css/sb-admin.css" rel="stylesheet">
-<!-- Core Scripts - Include with every page -->
-<link href="/fisrt/js/jquery-1.10.2.js">
-<link href="/fisrt/js/bootstrap.min.js">
-<link href="/fisrt/js/plugins/metisMenu/jquery.metisMenu.js">
-
-<!-- SB Admin Scripts - Include with every page -->
-<link href="/fisrt/js/sb-admin.js">
-
-<title>ÇÐ¿ø °ü¸®½Ã½ºÅÛ</title>
+<title>í•™ì› ê´€ë¦¬ì‹œìŠ¤í…œ</title>
 </head>
 <body>
 	<div id="wrapper"><!-- /#wrapper -->
@@ -36,7 +19,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#" style="color: white">ÇÐ¿ø °ü¸®½Ã½ºÅÛ</a>
+                <a class="navbar-brand" href="#" style="color: white">í•™ì› ê´€ë¦¬ì‹œìŠ¤í…œ</a>
             </div>
             <!-- /.navbar-header -->
 			
@@ -47,8 +30,8 @@
 					</span>
 				</li>
                 <li class="dropdown">
-                    <a href="logout.do">
-                        <span class="badge"><i class="glyphicon glyphicon-off"></i> ·Î±×¾Æ¿ô</span>
+                    <a href="/first/dblab/logout.do">
+                        <span class="badge"><i class="glyphicon glyphicon-off"></i> ë¡œê·¸ì•„ì›ƒ</span>
                     </a>
                 </li>
             </ul>
@@ -60,43 +43,40 @@
 			<ul class="nav" id="side-menu">
 				<li class="sidebar-search"></li>
 				<li>
-					<a href="#" class="hidden-print list-group-item active"><i class="fa fa-dashboard fa-fw"></i> ´ë½Ãº¸µå</a>
+					<a href="#" class="hidden-print list-group-item active"><i class="fa fa-dashboard fa-fw"></i> ëŒ€ì‹œë³´ë“œ</a>
 				</li>
 				<li class="active1">
-					<a href="#"><i class="fa fa-user fa-fw"></i> ÇÐ¿ø»ý Á¤º¸	<span class="fa arrow"></span></a>
+					<a href="#"><i class="fa fa-user fa-fw"></i> í•™ì›ìƒ ì •ë³´	<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li>
-							<a href="#">ÇÐ¿ø»ý °ü¸®</a>
+							<a href="/first/dblab/studentList.do"><i class="glyphicon glyphicon-cog"></i>í•™ì›ìƒ ê´€ë¦¬</a>
 						</li>
 						<li>
-							<a href="#">¼ºÀû Á¶È¸</a>
-						</li>
-						<li>
-							<a href="#">¼ö°­·á ³³ºÎÇöÈ²</a>
+							<a href="/first/dblab/cashCheck.do"><i class="glyphicon glyphicon-usd"></i>ìˆ˜ê°•ë£Œ ë‚©ë¶€í˜„í™©</a>
 						</li>
 					</ul>
 					<!-- /.nav-second-level -->
 				</li>
 				<li class="active2">
-					<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Ãâ¼®ºÎ °ü¸®<span class="fa arrow"></span></a>
+					<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> ì¶œì„ë¶€ ê´€ë¦¬<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li>
-							<a href="#">ÀÏÀÏ¾÷¹«ÀÏÁö</a>
+							<a href="/first/dblab/dayLog.do"><i class="glyphicon glyphicon-list"></i>ì¼ì¼ì—…ë¬´ì¼ì§€</a>
 						</li>
 						<li>
-							<a href="#">ÇÐ»ýº°¾÷¹«ÀÏÁö</a>
+							<a href="/first/dblab/studentLog.do"><i class="glyphicon glyphicon-book"></i>í•™ìƒë³„ì—…ë¬´ì¼ì§€</a>
 						</li>
 					</ul>
 					<!-- /.nav-second-level -->
 				</li>
 				<li>
-					<a href="#"><i class="glyphicon glyphicon-usd"></i> Çö±Ý Ãâ³³ºÎ</a>
+					<a href="/first/dblab/cashbook.do"><i class="glyphicon glyphicon-usd"></i> í˜„ê¸ˆ ì¶œë‚©ë¶€</a>
 				</li>
 				<li>
-					<a href="#"><i class="glyphicon glyphicon-folder-open"></i> ÀÚ·á½Ç</a>
+					<a href="/first/dblab/file.do"><i class="glyphicon glyphicon-folder-open"></i> ìžë£Œì‹¤</a>
 				</li>
 				<li>
-					<a href="#"><i class="glyphicon glyphicon-tags"></i> °ü¸®ÀÚ ÆäÀÌÁö</a>
+					<a href="/first/dblab/admin.do"><i class="glyphicon glyphicon-tags"></i> ê´€ë¦¬ìž íŽ˜ì´ì§€</a>
 				</li>
 			</ul>
 			<!-- /#side-menu -->
@@ -112,79 +92,72 @@
 			</div>
 			
 			<div class="row">
-				<span class="col-lg-12">
-					<div class="panel panel-default">
-                        <div class="panel-heading my-panel">
-							Dashboard
+					<span class="col-lg-6">
+						<div class="panel panel-default">
+	                        <div class="panel-heading my-panel">
+								ìžì‚°
+							</div>
+							<div class="panel-body">
+								<div id="moneyChart">
+								</div>
+							</div>
 						</div>
-						<div class="panel-body">
-							<ul class="nav nav-tabs">
-								<li class="active"><a onclick="javascript:RefreshPointTable(100)" data-toggle="tab">a1</a></li>
-								<li><a onclick="javascript:RefreshPointTable(130)" data-toggle="tab">a2</a></li>
-								<li><a onclick="javascript:RefreshPointTable(150)" data-toggle="tab">a3</a></li>
-							</ul>
-							<table class="table table-condensed table-striped table-bordered table-hover text-center" id = 'datatables-point'>
-								<thead>
-									<tr>
-										<th class='text-center'>b1</th>
-										<th class='text-center'>b2</th>
-										<th class='text-center'>b3</th>
-										<th class='text-center'>b4</th>
-										<th class='text-center hidden-print'><i class="glyphicon glyphicon-remove"></i></th>
-									</tr>
-								</thead>
-									
-								<tbody id = "point-body"></tbody>
-							</table>
+					</span>
+					<span class="col-lg-6">
+						<div class="panel panel-default">
+	                        <div class="panel-heading my-panel">
+								ìˆ˜ê°•ë£Œ ë‚©ë¶€í˜„í™©
+							</div>
+							<div class="panel-body">
+								<div id="cashCheck">
+								</div>
+							</div>
 						</div>
-					</div>
-				</span>
+					</span>
 			</div>
 				
-			<div class="row">
-				<span class="col-lg-6">
-					<div class="panel panel-default">
-                        <div class="panel-heading my-panel"><input type="month" class="input-sm input-month" id="inputBookMonth">c1</div>
-						<div class="panel-body">
-							<table class="table table-condensed table-striped table-bordered table-hover text-center">
-								<thead>
-									<tr>
-										<th class='text-center'>c2</th>
-										<th class='text-center'>c3</th>
-										<th class='text-center'>c4</th>
-									</tr>
-								</thead>
-								<tbody id="bookking"></tbody>
-							</table>
-						</div>
-					</div>
-				</span>
-				<span class="col-lg-6">
-					<div class="panel panel-default">
-                        <div class="panel-heading my-panel"><input type="month" class="input-sm input-month" id="inputShadowMonth">d1</div>
-						<div class="panel-body">
-							<table class="table table-condensed table-striped table-bordered table-hover text-center">
-								<thead>
-									<tr>
-										<th class='text-center'>d2</th>
-										<th class='text-center'>d3</th>
-										<th class='text-center'>d4</th>
-									</tr>
-								</thead>
-									
-								<tbody id="shadowking"></tbody>
-							</table>
-						</div>
-					</div>
-				</span>
-            </div><!-- /.row -->
+			
 		
 		</div><!-- /#page-wrapper -->
         
     
     </div><!-- /#wrapper -->
-
-    
+	<script>
+		new Morris.Line({
+			
+		element: 'moneyChart',
+		data:[
+			<c:choose>
+				<c:when test="${fn:length(list) > 0}">
+					<c:forEach var="row" items="${list}" varStatus="status">
+							{ year: '${row.C_DATE}', value : ${row.C_TOTAL}},
+					</c:forEach>
+				</c:when>
+			</c:choose>
+		],
+		xkey: 'year',
+		ykeys: ['value'],
+		labels: ['Value']
+		});
+	</script>
+	<script>
+		new Morris.Bar({
+			element: 'cashCheck',
+			data:[
+				<c:choose>
+					<c:when test="${fn:length(list1) > 0}">
+						<c:forEach var="row1" items="${list1}" varStatus="status">
+								{ x: 'ìˆ˜ë‚©ìž & ë¯¸ë‚©ìž', a: ${row1.S_CHECK_Y} , b: ${row1.S_CHECK_N}},
+						</c:forEach>
+					</c:when>
+				</c:choose>    
+			],
+			xkey: 'x',
+			ykeys: ['a', 'b'],
+			labels: ['ìˆ˜ë‚©ìž', 'ë¯¸ë‚©ìž']
+		})
+	</script>
+    <%@ include file="/WEB-INF/include/include-body.jspf" %>
 	<script>
 		$(document).ready( function() {
 		  $("#load_writing").on("click", function() {

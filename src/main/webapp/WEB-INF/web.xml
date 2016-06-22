@@ -4,8 +4,9 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 	
 	<welcome-file-list>
-	    <welcome-file>index.jsp</welcome-file>
+	    <welcome-file>index.do</welcome-file>
 	</welcome-file-list> 
+	
     <!-- 인코딩 --> 
 	<filter>
 	    <filter-name>encodingFilter</filter-name>
@@ -17,14 +18,12 @@
 	      <param-value>utf-8</param-value>
 	    </init-param>
 	</filter>
+	
 	<filter-mapping>
 	    <filter-name>encodingFilter</filter-name>
-	    <url-pattern>*.do</url-pattern>
+	    <url-pattern>/dblab/*</url-pattern>
 	</filter-mapping>
-	<filter-mapping>
-	    <filter-name>encodingFilter</filter-name>
-	    <url-pattern>*.go</url-pattern>
-	</filter-mapping>
+	
 	   
 	<listener>
 	   	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -43,11 +42,7 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	<servlet-mapping>
-		<servlet-name>action</servlet-name>
-		<url-pattern>*.go</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
+	<servlet-mapping><!-- .do로 끝나는 모든 url은 action이라는 이름을 가진 servlet에게 요청을 넘기겠다. -->
 		<servlet-name>action</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
